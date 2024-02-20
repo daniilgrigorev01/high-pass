@@ -1,0 +1,41 @@
+{
+  "name": "high-pass",
+  "type": "module",
+  "author": "Daniil Grigorev <daniilgrigorev01@mail.ru>",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "lint:scss": "stylelint 'src/**/*.scss'",
+    "lint:ts": "eslint 'src/**/*.{ts,astro}'"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.5",
+    "@astrojs/ts-plugin": "^1.5.3",
+    "astro": "^4.4.1",
+    "sass": "^1.71.0",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-astro": "^0.31.4",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-unicorn": "^51.0.1",
+    "postcss-html": "^1.6.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "stylelint": "^16.2.1",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-config-standard-scss": "^13.0.0",
+    "stylelint-order": "^6.0.4"
+  }
+}

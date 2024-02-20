@@ -1,0 +1,14 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": ["src", ".eslintrc.cjs"],
+  "exclude": ["node_modules", "dist"],
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ],
+    "jsx": "preserve",
+    "baseUrl": "."
+  }
+}

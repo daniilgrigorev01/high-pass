@@ -1,0 +1,43 @@
+name: Линтинг кода
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  eslint:
+    name: Проверка c помощью ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Извлечение репозитория
+        uses: actions/checkout@v4
+      - name: Установка Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Установка pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+          run_install: true
+      - name: Запуск ESLint
+        run: pnpm run lint:ts
+
+  stylelint:
+    name: Проверка c помощью Stylelint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Извлечение репозитория
+        uses: actions/checkout@v4
+      - name: Установка Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Установка pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+          run_install: true
+      - name: Запуск Stylelint
+        run: pnpm run lint:scss
