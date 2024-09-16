@@ -22,5 +22,6 @@ export default antfu({
         },
       },
     ],
+    'unicorn/prevent-abbreviations': 'off',
   },
 }).append(eslintPluginJsxA11y.flatConfigs.recommended);
