@@ -3,6 +3,10 @@ export default {
   plugins: {
     'tailwindcss/nesting': {},
     tailwindcss: {},
-    autoprefixer: {},
+    'postcss-preset-env': {
+      feature: {
+        'nesting-rules': false,
+      },
+    },
   },
 };
