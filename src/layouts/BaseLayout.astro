@@ -50,6 +50,13 @@ const { title } = Astro.props;
     />
     <meta name="theme-color" content="#ffffff" />
 
+    <style>
+      body:has(dialog[open]),
+      body:has(nav.open) {
+        overflow: hidden;
+      }
+    </style>
+
     <title>{title}</title>
   </head>
   <body>

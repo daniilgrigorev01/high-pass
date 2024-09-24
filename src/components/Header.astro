@@ -1,0 +1,29 @@
+---
+import ButtonBurger from '@components/ButtonBurger.astro';
+import Logo from '@components/Logo.astro';
+import NavMenu from '@components/NavMenu.astro';
+import SearchButton from '@components/SearchButton.astro';
+import SearchDialog from '@components/SearchDialog.astro';
+---
+
+<header
+  class="relative flex items-center justify-between bg-gray-500 px-5 py-[25px]"
+>
+  <Logo class="w-28" />
+  <SearchButton class="size-5" />
+  <ButtonBurger />
+  <NavMenu />
+  <SearchDialog />
+</header>
+
+<style>
+  header::after {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background-color: theme(colors.gray.400);
+    content: '';
+  }
+</style>

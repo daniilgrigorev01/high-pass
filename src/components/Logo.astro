@@ -1,0 +1,28 @@
+---
+import logoImg from '@assets/images/logo.png';
+import { Picture } from 'astro:assets';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<a
+  href="/"
+  class:list={[
+    'focus-visible:outline-brand-200 outline-offset-4 transition-all ease-linear focus:outline-none',
+    className,
+  ]}
+  {...rest}
+>
+  <Picture
+    src={logoImg}
+    width={logoImg.width / 2}
+    densities={[2]}
+    formats={['avif', 'webp']}
+    loading={'eager'}
+    alt="High Pass"
+  />
+</a>

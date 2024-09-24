@@ -1,0 +1,20 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<button
+  class:list={['group focus:outline-none', className]}
+  {...rest}
+  aria-label="Закрыть окно"
+>
+  <Icon
+    name="close"
+    class="size-full text-lg text-[oklch(59.99%_0_0)] transition-colors ease-linear group-focus-visible:text-brand-500 group-active:text-brand-400 lg:group-hover:text-brand-200"
+  />
+</button>

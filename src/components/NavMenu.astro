@@ -1,0 +1,108 @@
+---
+import CloseButton from '@components/CloseButton.astro';
+import { Icon } from 'astro-icon/components';
+
+type navItem = {
+  link: string;
+  name: string;
+};
+
+const navItems: navItem[] = [
+  {
+    link: '#about',
+    name: 'О студии',
+  },
+  {
+    link: '#projects',
+    name: 'Наши проекты',
+  },
+  {
+    link: '/services',
+    name: 'Услуги',
+  },
+  {
+    link: '/workshops',
+    name: 'Мастер-классы',
+  },
+  {
+    link: '#contacts',
+    name: 'Контакты',
+  },
+];
+---
+
+<nav
+  class="absolute -left-full top-0 z-10 flex h-screen w-full flex-col bg-gray-500 pb-9 pl-5 pt-3.5"
+  id="navMenu"
+>
+  <CloseButton class="close-btn mb-4 size-[18px]" />
+  <ul>
+    {
+      navItems.map(({ link, name }) => (
+        <li class="text-gray-50">
+          <a
+            href={link}
+            class="relative -ml-[5px] focus:outline-none active:text-brand-400 lg:hover:text-brand-200"
+          >
+            <span class="relative z-10">{name}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <a
+    href="tel:+749542423532"
+    class="group mt-auto flex items-center text-brand-200 focus:outline-none"
+  >
+    <Icon
+      name="phone"
+      class="size-[15px] text-brand-200 transition-colors duration-200 ease-linear group-focus-visible:text-gray-50 group-active:text-brand-400"
+    />
+    <span
+      class="relative text-sm transition-colors duration-200 ease-linear group-focus-visible:text-gray-50 group-active:text-brand-400"
+      >+7 495 424-23-532</span
+    >
+  </a>
+</nav>
+
+<style>
+  nav {
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+
+    &.open {
+      transform: translateX(100%);
+    }
+  }
+
+  li {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  a {
+    width: max-content;
+    padding: 5px;
+    background-color: transparent;
+    transition:
+      background-color 0.2s linear,
+      color 0.2s linear;
+
+    &:focus-visible {
+      background-color: theme(colors.brand.500);
+    }
+  }
+</style>
+
+<script>
+  const button: HTMLButtonElement | null =
+    document.querySelector('nav .close-btn');
+  const navMenu: HTMLElement | null = document.querySelector('nav');
+
+  if (button instanceof HTMLButtonElement && navMenu instanceof HTMLElement) {
+    button.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+    });
+  }
+</script>

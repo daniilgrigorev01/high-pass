@@ -1,0 +1,83 @@
+---
+import CloseButton from '@components/CloseButton.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<dialog class="dialog w-full" id="searchDialog" data-closure-target>
+  <search class="grid grid-cols-[1fr,_18px] gap-2.5 bg-gray-500 p-2">
+    <input
+      type="search"
+      class="border-b border-b-gray-100 bg-transparent text-sm text-gray-100 placeholder:text-gray-100 focus:outline-none focus-visible:border-b-brand-500 active:border-b-brand-400 lg:hover:border-b-brand-200"
+      aria-label="Что будем искать?"
+      placeholder="Что будем искать?"
+    />
+    <CloseButton class="close-button size-[18px]" />
+    <div class="search-result col-span-2 flex flex-col items-center">
+      <Icon name="search-error" class="mb-1.5 text-2xl text-gray-50" />
+      <p class="text-center text-sm text-gray-50">
+        Извините, поиск еще не реализован
+      </p>
+    </div>
+  </search>
+</dialog>
+
+<style>
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button {
+    display: none;
+  }
+
+  div {
+    display: none;
+
+    &.open {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  import debounce from '@assets/scripts/debounce';
+
+  const dialog: HTMLDialogElement | null =
+    document.querySelector('#searchDialog');
+  const button: HTMLButtonElement | null = document.querySelector(
+    'dialog .close-button',
+  );
+  const input: HTMLInputElement | null = document.querySelector('search input');
+  const searchResult: HTMLDivElement | null =
+    document.querySelector('.search-result');
+
+  if (
+    dialog instanceof HTMLDialogElement &&
+    button instanceof HTMLButtonElement &&
+    input instanceof HTMLInputElement &&
+    searchResult instanceof HTMLDivElement
+  ) {
+    function handleInput(e: Event) {
+      e.preventDefault();
+
+      if (searchResult instanceof HTMLDivElement) {
+        searchResult.classList.add('open');
+      }
+    }
+
+    const debounceHandleInput = debounce(handleInput, 500);
+
+    dialog.addEventListener('click', (e: MouseEvent) => {
+      if (e.currentTarget === e.target) {
+        input.value = '';
+        searchResult.classList.remove('open');
+        dialog.close();
+      }
+    });
+
+    button.addEventListener('click', () => {
+      input.value = '';
+      searchResult.classList.remove('open');
+      dialog.close();
+    });
+
+    input.addEventListener('input', debounceHandleInput);
+  }
+</script>

@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<button
+  class="button-burger group absolute top-[84px] z-10 h-[18px] w-5 focus:outline-none"
+  aria-label="Открыть меню"
+>
+  <Icon
+    name="button-burger"
+    class="size-full text-gray-50 transition-colors ease-linear group-focus-visible:text-brand-500 group-active:text-brand-400"
+  />
+</button>
+
+<script>
+  const button: HTMLButtonElement | null =
+    document.querySelector('.button-burger');
+  const navMenu: HTMLElement | null = document.querySelector('#navMenu');
+
+  if (button instanceof HTMLButtonElement && navMenu instanceof HTMLElement) {
+    button.addEventListener('click', () => {
+      navMenu.classList.add('open');
+    });
+  }
+</script>
