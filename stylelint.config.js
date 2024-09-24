@@ -11,10 +11,9 @@ export default {
     'plugin/rational-order': [true, { 'border-in-box-model': true }],
     'color-named': 'never',
     'color-no-hex': true,
+    'function-disallowed-list': ['rgb', 'hsl'],
+    'function-no-unknown': 'ignoreFunctions: ["/theme/"]',
     'declaration-no-important': true,
-    'selector-max-id': 0,
-    'selector-max-type': 0,
-    'selector-max-universal': 0,
     'font-weight-notation': 'numeric',
   },
 };
